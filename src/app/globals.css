@@ -2,28 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 赛博朋克配色方案 */
+/* 简约浅色配色方案 */
 :root {
-  --cyber-bg-primary: #0a0a0a;
-  --cyber-bg-secondary: #1a1a1a;
-  --cyber-bg-tertiary: #2a2a2a;
-  --cyber-text-primary: #00ffff;
-  --cyber-text-secondary: #ffffff;
-  --cyber-text-muted: #888888;
-  --cyber-accent-cyan: #00ffff;
-  --cyber-accent-magenta: #ff00ff;
-  --cyber-accent-green: #00ff00;
-  --cyber-accent-yellow: #ffff00;
-  --cyber-glow-cyan: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
-  --cyber-glow-magenta: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-  --cyber-glow-green: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-success: #10b981;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 body {
-  color: var(--cyber-text-secondary);
-  background: var(--cyber-bg-primary);
-  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
-  overflow-x: hidden;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
 }
 
 @layer utilities {
@@ -32,149 +33,100 @@ body {
   }
 }
 
-/* 赛博朋克核心样式 */
-.cyber-container {
-  background: linear-gradient(135deg, var(--cyber-bg-primary) 0%, var(--cyber-bg-secondary) 100%);
-  border: 1px solid var(--cyber-accent-cyan);
+/* 现代简约样式 */
+.modern-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+
+.modern-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
+}
+
+.modern-button {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
   border-radius: 8px;
-  box-shadow: var(--cyber-glow-cyan);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
-.cyber-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-  animation: cyber-scan 3s infinite;
+.modern-button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-.cyber-text-glow {
-  color: var(--cyber-text-primary);
-  text-shadow: var(--cyber-glow-cyan);
-  font-weight: 600;
-}
-
-.cyber-text-secondary {
-  color: var(--cyber-text-muted);
-  font-family: 'Courier New', monospace;
-}
-
-.cyber-button {
-  background: linear-gradient(45deg, var(--cyber-bg-secondary), var(--cyber-bg-tertiary));
-  border: 2px solid var(--cyber-accent-cyan);
-  color: var(--cyber-text-primary);
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: var(--cyber-glow-cyan);
-}
-
-.cyber-button:hover {
-  background: linear-gradient(45deg, var(--cyber-accent-cyan), var(--cyber-accent-magenta));
-  color: var(--cyber-bg-primary);
-  box-shadow: var(--cyber-glow-magenta);
-  transform: translateY(-2px);
-}
-
-.cyber-button:disabled {
-  background: var(--cyber-bg-tertiary);
-  border-color: var(--cyber-text-muted);
-  color: var(--cyber-text-muted);
-  box-shadow: none;
+.modern-button:disabled {
+  background: var(--text-muted);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-.cyber-input {
-  background: var(--cyber-bg-secondary);
-  border: 2px solid var(--cyber-accent-green);
-  color: var(--cyber-text-secondary);
-  font-family: 'Courier New', monospace;
-  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
-  transition: all 0.3s ease;
+.modern-button-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
 }
 
-.cyber-input:focus {
+.modern-button-secondary:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-primary);
+}
+
+.modern-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.modern-input:focus {
   outline: none;
-  border-color: var(--cyber-accent-cyan);
-  box-shadow: var(--cyber-glow-cyan), inset 0 0 20px rgba(0, 255, 255, 0.1);
-  background: rgba(0, 255, 255, 0.05);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.1);
 }
 
-.cyber-input::placeholder {
-  color: var(--cyber-text-muted);
-  opacity: 0.7;
+.modern-input::placeholder {
+  color: var(--text-muted);
 }
 
-/* 赛博朋克动画 */
-@keyframes cyber-scan {
-  0% { left: -100%; }
-  100% { left: 100%; }
+.modern-title {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-@keyframes cyber-pulse {
-  0%, 100% {
-    box-shadow: var(--cyber-glow-cyan);
-    border-color: var(--cyber-accent-cyan);
-  }
-  50% {
-    box-shadow: var(--cyber-glow-magenta);
-    border-color: var(--cyber-accent-magenta);
-  }
+.modern-subtitle {
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
-@keyframes cyber-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+/* 简约动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes matrix-rain {
-  0% { transform: translateY(-100vh); opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes cyber-glow-rotate {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
 }
 
-/* 数字雨背景 */
-.matrix-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.matrix-char {
-  position: absolute;
-  color: var(--cyber-accent-green);
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  animation: matrix-rain 3s linear infinite;
-  text-shadow: 0 0 5px var(--cyber-accent-green);
-}
-
-/* 网格背景 */
-.cyber-grid {
-  background-image:
-    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: cyber-glow-rotate 10s linear infinite;
+.slide-in {
+  animation: slideIn 0.3s ease-out;
 }
 
 /* 微信浏览器优化 */
@@ -185,81 +137,56 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* 赛博朋克特殊效果 */
-.cyber-title {
-  background: linear-gradient(45deg, var(--cyber-accent-cyan), var(--cyber-accent-magenta), var(--cyber-accent-green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: cyber-glow-rotate 3s linear infinite;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+/* 现代错误和成功样式 */
+.modern-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  border-radius: 8px;
 }
 
-.cyber-card {
-  background: linear-gradient(135deg,
-    rgba(26, 26, 26, 0.9) 0%,
-    rgba(42, 42, 42, 0.8) 100%);
-  border: 1px solid var(--cyber-accent-cyan);
-  border-radius: 12px;
-  box-shadow:
-    var(--cyber-glow-cyan),
-    inset 0 1px 0 rgba(0, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
+.modern-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  border-radius: 8px;
+}
+
+/* 图片容器样式 */
+.image-container {
   position: relative;
   overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+  background: var(--bg-primary);
 }
 
-.cyber-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent,
-    var(--cyber-accent-cyan),
-    transparent);
-  animation: cyber-scan 2s infinite;
+.image-container:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
 }
 
-.cyber-error {
-  background: rgba(255, 0, 255, 0.1);
-  border: 1px solid var(--cyber-accent-magenta);
-  color: var(--cyber-accent-magenta);
-  box-shadow: var(--cyber-glow-magenta);
-  animation: cyber-flicker 1s infinite;
+/* 上传区域样式 */
+.upload-area {
+  border: 2px dashed var(--border-medium);
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  transition: all 0.2s ease;
 }
 
-.cyber-success {
-  background: rgba(0, 255, 0, 0.1);
-  border: 1px solid var(--cyber-accent-green);
-  color: var(--cyber-accent-green);
-  box-shadow: var(--cyber-glow-green);
+.upload-area:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-tertiary);
 }
 
-.cyber-loading {
-  position: relative;
+.upload-area.dragover {
+  border-color: var(--accent-primary);
+  background: rgb(59 130 246 / 0.05);
 }
 
-.cyber-loading::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 2px solid transparent;
-  border-top: 2px solid var(--cyber-accent-cyan);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* 移动端优化 */
+/* 响应式设计优化 */
 @media (max-width: 768px) {
   .container {
     padding-left: 1rem;
@@ -276,11 +203,28 @@ body {
   }
 
   input, textarea {
-    font-size: 16px;
+    font-size: 16px; /* 防止iOS缩放 */
   }
 
-  .cyber-title {
-    font-size: 1.5rem;
+  .modern-title {
+    font-size: 1.875rem; /* 30px */
+  }
+
+  .modern-card {
+    margin: 0.5rem;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .desktop-full {
+    grid-column: 1 / -1;
   }
 }
 
@@ -292,15 +236,14 @@ body {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
-/* 赛博朋克加载动画 */
+/* 现代加载动画 */
 .loading-spinner {
-  border: 2px solid transparent;
-  border-top: 2px solid var(--cyber-accent-cyan);
+  border: 2px solid var(--border-light);
+  border-top: 2px solid var(--accent-primary);
   border-radius: 50%;
   width: 20px;
   height: 20px;
   animation: spin 1s linear infinite;
-  box-shadow: 0 0 10px var(--cyber-accent-cyan);
 }
 
 @keyframes spin {
@@ -308,168 +251,16 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* 赛博朋克背景 */
-.cyber-bg {
-  background:
-    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, var(--cyber-bg-primary) 0%, var(--cyber-bg-secondary) 100%);
-  position: relative;
+/* 现代背景 */
+.modern-bg {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  min-height: 100vh;
 }
 
-.cyber-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100px 100px;
-  animation: cyber-grid-move 20s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes cyber-grid-move {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(100px, 100px); }
-}
-
-/* 图片容器赛博朋克风格 */
-.image-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 2px solid var(--cyber-accent-cyan);
-  box-shadow: var(--cyber-glow-cyan);
-  transition: all 0.3s ease;
-  background: var(--cyber-bg-secondary);
-}
-
-.image-container:hover {
-  border-color: var(--cyber-accent-magenta);
-  box-shadow: var(--cyber-glow-magenta);
-  transform: scale(1.02);
-}
-
-.image-container::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, var(--cyber-accent-cyan), var(--cyber-accent-magenta), var(--cyber-accent-green));
-  border-radius: 12px;
-  z-index: -1;
-  animation: cyber-glow-rotate 3s linear infinite;
-}
-
-/* 赛博朋克脉冲效果 */
-.cyber-pulse {
-  animation: cyber-pulse 2s ease-in-out infinite;
-}
-
-/* 故障效果 */
-.cyber-glitch {
-  position: relative;
-}
-
-.cyber-glitch::before,
-.cyber-glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.cyber-glitch::before {
-  animation: cyber-glitch-1 0.5s infinite;
-  color: var(--cyber-accent-cyan);
-  z-index: -1;
-}
-
-.cyber-glitch::after {
-  animation: cyber-glitch-2 0.5s infinite;
-  color: var(--cyber-accent-magenta);
-  z-index: -2;
-}
-
-@keyframes cyber-glitch-1 {
-  0%, 14%, 15%, 49%, 50%, 99%, 100% { transform: translate(0); }
-  15%, 49% { transform: translate(-2px, 1px); }
-}
-
-@keyframes cyber-glitch-2 {
-  0%, 20%, 21%, 62%, 63%, 99%, 100% { transform: translate(0); }
-  21%, 62% { transform: translate(2px, -1px); }
-}
-
-/* 额外的赛博朋克特效 */
-.cyber-border-glow {
-  position: relative;
-}
-
-.cyber-border-glow::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, var(--cyber-accent-cyan), var(--cyber-accent-magenta), var(--cyber-accent-green), var(--cyber-accent-cyan));
-  border-radius: inherit;
-  z-index: -1;
-  animation: cyber-glow-rotate 2s linear infinite;
-  filter: blur(1px);
-}
-
-.cyber-text-typing {
-  overflow: hidden;
-  border-right: 2px solid var(--cyber-accent-cyan);
-  white-space: nowrap;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--cyber-accent-cyan); }
-}
-
-.cyber-hologram {
-  position: relative;
-  background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.1) 50%, transparent 70%);
-  background-size: 200% 200%;
-  animation: hologram-scan 3s ease-in-out infinite;
-}
-
-@keyframes hologram-scan {
-  0%, 100% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-}
-
-/* 响应式赛博朋克优化 */
-@media (max-width: 640px) {
-  .cyber-title {
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-  }
-
-  .cyber-button {
-    font-size: 0.9rem;
-    padding: 12px 16px;
-  }
-
-  .matrix-char {
-    font-size: 12px;
-  }
+/* 工具类 */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

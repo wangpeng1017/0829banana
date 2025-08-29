@@ -70,14 +70,14 @@ export default function ImageEditor({
     }
   }
 
-  // 赛博朋克风格编辑建议
+  // 编辑建议
   const editSuggestions = [
-    '添加霓虹灯效果',
-    '改成赛博朋克风格',
-    '添加数字雨背景',
-    '改成夜晚城市场景',
-    '增加发光边框',
-    '改变颜色为青紫色调'
+    '改变背景颜色',
+    '调整为卡通风格',
+    '添加自然元素',
+    '改成夜晚场景',
+    '增强色彩饱和度',
+    '改为暖色调'
   ]
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -87,47 +87,44 @@ export default function ImageEditor({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold cyber-text-glow mb-2">
-          [MODIFY] 图片编辑模块
+        <h2 className="text-2xl sm:text-3xl font-bold modern-title mb-2">
+          图片编辑
         </h2>
-        <p className="cyber-text-secondary text-sm">
-          &gt; 通过自然语言描述对图片进行精确修改 &lt;
+        <p className="modern-subtitle text-sm">
+          通过自然语言描述对图片进行精确修改
         </p>
-        <div className="cyber-text-secondary text-xs mt-2 opacity-60">
-          [MODE] 智能图像处理 | [ENGINE] 神经网络驱动
-        </div>
       </div>
 
       <div className="space-y-5">
         <div>
-          <label htmlFor="editPrompt" className="block text-sm font-bold cyber-text-glow mb-3">
-            [COMMAND] 编辑指令参数
+          <label htmlFor="editPrompt" className="block text-sm font-medium text-gray-700 mb-2">
+            编辑指令
           </label>
           <textarea
             id="editPrompt"
             value={editPrompt}
             onChange={(e) => setEditPrompt(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="> 例如：把帽子换成红色霓虹灯效果，添加赛博朋克风格花朵，改变背景为夜空城市"
-            className="w-full px-4 py-4 cyber-input rounded-xl resize-none transition-all duration-200 text-base"
+            placeholder="例如：把帽子换成红色，添加一些花朵，改变背景为夜空"
+            className="w-full px-4 py-3 modern-input resize-none text-base"
             rows={3}
             disabled={isLoading}
           />
-          <div className="mt-2 text-xs cyber-text-secondary opacity-70">
-            [SYSTEM] 支持颜色、风格、元素等修改指令
+          <div className="mt-2 text-xs text-gray-500">
+            💡 支持颜色、风格、元素等修改指令
           </div>
         </div>
 
-        {/* 赛博朋克编辑建议 */}
+        {/* 编辑建议 */}
         <div>
-          <p className="text-sm font-bold cyber-text-glow mb-3">[PRESETS] 快速指令：</p>
+          <p className="text-sm font-medium text-gray-700 mb-3">快速选择：</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {editSuggestions.map((suggestion, index) => (
               <button
                 key={index}
                 onClick={() => handleSuggestionClick(suggestion)}
                 disabled={isLoading}
-                className="px-3 py-2 text-sm cyber-container hover:cyber-pulse disabled:opacity-50 disabled:cursor-not-allowed cyber-text-secondary rounded-lg transition-all duration-200"
+                className="px-3 py-2 text-sm modern-button-secondary rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 {suggestion}
               </button>
@@ -138,20 +135,19 @@ export default function ImageEditor({
         <button
           onClick={handleEdit}
           disabled={isLoading || !editPrompt.trim()}
-          className="w-full cyber-button py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2"
-          style={{'--cyber-accent-cyan': '#ff00ff'} as React.CSSProperties}
+          className="w-full modern-button py-3 px-6 rounded-lg flex items-center justify-center space-x-2"
         >
           {isLoading ? (
             <>
               <div className="loading-spinner"></div>
-              <span>[PROCESSING] 神经网络编辑中...</span>
+              <span>正在编辑...</span>
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
-              <span>[EXECUTE] 启动图片编辑</span>
+              <span>编辑图片</span>
             </>
           )}
         </button>

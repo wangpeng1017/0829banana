@@ -79,45 +79,41 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold cyber-text-glow mb-2">
-          [OUTPUT] 生成结果
+        <h2 className="text-2xl sm:text-3xl font-bold modern-title mb-2">
+          图片预览
         </h2>
-        <p className="cyber-text-secondary text-sm">
-          &gt; 您的AI艺术作品已完成 &lt;
+        <p className="modern-subtitle text-sm">
+          您的AI作品已完成
         </p>
-        <div className="cyber-text-secondary text-xs mt-2 opacity-60">
-          [STATUS] 图像渲染完成 | [QUALITY] 高清输出
-        </div>
       </div>
 
       <div className="image-container mx-auto max-w-2xl">
         <img
           src={imageUrl}
           alt="AI生成的图片"
-          className="w-full h-auto rounded-2xl shadow-2xl"
+          className="w-full h-auto rounded-lg"
           style={{ maxHeight: '600px', objectFit: 'contain' }}
           loading="lazy"
         />
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <button
           onClick={handleDownload}
           disabled={isDownloading}
-          className="cyber-button py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2"
-          style={{'--cyber-accent-cyan': '#00ff00'} as React.CSSProperties}
+          className="modern-button py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
         >
           {isDownloading ? (
             <>
               <div className="loading-spinner"></div>
-              <span>[DOWNLOADING]</span>
+              <span>下载中...</span>
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <span>[SAVE] 保存</span>
+              <span>保存</span>
             </>
           )}
         </button>
@@ -125,43 +121,42 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
         <button
           onClick={handleCopyImage}
           disabled={isCopying}
-          className="cyber-button py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2"
-          style={{'--cyber-accent-cyan': '#ff00ff'} as React.CSSProperties}
+          className="modern-button-secondary py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
         >
           {isCopying ? (
             <>
               <div className="loading-spinner"></div>
-              <span>[COPYING]</span>
+              <span>复制中...</span>
             </>
           ) : (
             <>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
-              <span>[COPY] 复制</span>
+              <span>复制</span>
             </>
           )}
         </button>
 
         <button
           onClick={handleShare}
-          className="cyber-button py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2"
+          className="modern-button-secondary py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
           </svg>
-          <span>[SHARE] 分享</span>
+          <span>分享</span>
         </button>
       </div>
 
-      <div className="cyber-success rounded-xl p-4 text-center">
+      <div className="modern-success p-4 text-center rounded-lg">
         <div className="text-sm">
-          <div className="font-bold cyber-text-glow mb-2">[SYSTEM TIP] 保存指南</div>
-          <div className="cyber-text-secondary">
-            &gt; 微信环境：点击[SAVE]按钮后长按图片选择"保存到相册" &lt;
+          <div className="font-semibold text-green-700 mb-2">💡 保存提示</div>
+          <div className="text-green-600">
+            微信中：点击保存按钮后长按图片选择"保存到相册"
           </div>
-          <div className="text-xs mt-2 opacity-70">
-            [INFO] 其他浏览器支持直接下载到本地存储
+          <div className="text-xs mt-1 text-green-500">
+            其他浏览器支持直接下载到本地
           </div>
         </div>
       </div>
