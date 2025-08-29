@@ -29,10 +29,10 @@ export default function Home() {
     <div className="max-w-6xl mx-auto space-y-8 px-4 sm:px-6 lg:px-8">
       {/* 简约标题区域 */}
       <div className="text-center py-12">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold modern-title mb-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
           AI图片生成器
         </h1>
-        <p className="text-lg sm:text-xl modern-subtitle mb-4 max-w-2xl mx-auto">
+        <p className="text-lg sm:text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
           输入文字描述或上传图片，AI为您生成和编辑精美图片
         </p>
         <p className="text-sm text-gray-500">
@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* 错误提示 */}
       {error && (
-        <div className="modern-error p-4 rounded-lg fade-in">
+        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg">
           <div className="flex items-start space-x-3">
             <div className="text-red-500 text-xl">⚠</div>
             <div>
@@ -54,9 +54,9 @@ export default function Home() {
       )}
 
       {/* 桌面端网格布局 */}
-      <div className="desktop-grid">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* 图片生成区域 */}
-        <div className="modern-card p-6 sm:p-8 fade-in">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-md p-6 sm:p-8">
           <ImageGenerator
             onImageGenerated={handleImageGenerated}
             onError={handleError}
@@ -67,14 +67,14 @@ export default function Home() {
 
         {/* 图片显示区域 */}
         {generatedImage && (
-          <div className="modern-card p-6 sm:p-8 fade-in">
+          <div className="bg-white border border-gray-200 rounded-xl shadow-md p-6 sm:p-8">
             <ImageDisplay imageUrl={generatedImage} />
           </div>
         )}
 
         {/* 图片编辑区域 - 全宽 */}
         {generatedImage && (
-          <div className="desktop-full modern-card p-6 sm:p-8 fade-in">
+          <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl shadow-md p-6 sm:p-8">
             <ImageEditor
               currentImage={generatedImage}
               onImageEdited={handleImageEdited}

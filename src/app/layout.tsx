@@ -30,8 +30,8 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="wechat-optimized">
-        <div className="min-h-screen modern-bg">
+      <body className="wechat-optimized bg-gray-50">
+        <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
           <main className="container mx-auto py-8 min-h-screen">
             {children}
           </main>

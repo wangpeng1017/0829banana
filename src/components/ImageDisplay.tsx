@@ -79,15 +79,15 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold modern-title mb-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
           图片预览
         </h2>
-        <p className="modern-subtitle text-sm">
+        <p className="text-gray-600 text-sm">
           您的AI作品已完成
         </p>
       </div>
 
-      <div className="image-container mx-auto max-w-2xl">
+      <div className="relative overflow-hidden rounded-xl border border-gray-200 shadow-md mx-auto max-w-2xl bg-white">
         <img
           src={imageUrl}
           alt="AI生成的图片"
@@ -101,7 +101,7 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
         <button
           onClick={handleDownload}
           disabled={isDownloading}
-          className="modern-button py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
+          className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
           {isDownloading ? (
             <>
@@ -121,7 +121,7 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
         <button
           onClick={handleCopyImage}
           disabled={isCopying}
-          className="modern-button-secondary py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
+          className="bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 text-gray-700 border border-gray-300 py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
           {isCopying ? (
             <>
@@ -140,7 +140,7 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
 
         <button
           onClick={handleShare}
-          className="modern-button-secondary py-3 px-4 rounded-lg flex items-center justify-center space-x-2"
+          className="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
@@ -149,7 +149,7 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
         </button>
       </div>
 
-      <div className="modern-success p-4 text-center rounded-lg">
+      <div className="bg-green-50 border border-green-200 text-green-700 p-4 text-center rounded-lg">
         <div className="text-sm">
           <div className="font-semibold text-green-700 mb-2">💡 保存提示</div>
           <div className="text-green-600">

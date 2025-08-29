@@ -87,10 +87,10 @@ export default function ImageEditor({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold modern-title mb-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
           图片编辑
         </h2>
-        <p className="modern-subtitle text-sm">
+        <p className="text-gray-600 text-sm">
           通过自然语言描述对图片进行精确修改
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function ImageEditor({
             onChange={(e) => setEditPrompt(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="例如：把帽子换成红色，添加一些花朵，改变背景为夜空"
-            className="w-full px-4 py-3 modern-input resize-none text-base"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none text-base"
             rows={3}
             disabled={isLoading}
           />
@@ -124,7 +124,7 @@ export default function ImageEditor({
                 key={index}
                 onClick={() => handleSuggestionClick(suggestion)}
                 disabled={isLoading}
-                className="px-3 py-2 text-sm modern-button-secondary rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 disabled:bg-gray-300 text-gray-700 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {suggestion}
               </button>
@@ -135,7 +135,7 @@ export default function ImageEditor({
         <button
           onClick={handleEdit}
           disabled={isLoading || !editPrompt.trim()}
-          className="w-full modern-button py-3 px-6 rounded-lg flex items-center justify-center space-x-2"
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white py-3 px-6 rounded-lg flex items-center justify-center space-x-2 transition-colors"
         >
           {isLoading ? (
             <>
