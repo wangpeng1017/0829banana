@@ -1,14 +1,21 @@
 // 性能监控和分析工具
 
+// 扩展Window接口以支持gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 /**
  * 记录性能指标
  */
 export function trackPerformance(name: string, startTime: number) {
   const endTime = performance.now()
   const duration = endTime - startTime
-  
+
   console.log(`[Performance] ${name}: ${duration.toFixed(2)}ms`)
-  
+
   // 在生产环境中，这里可以发送到分析服务
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'timing_complete', {

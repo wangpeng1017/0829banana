@@ -5,11 +5,17 @@ export const metadata: Metadata = {
   title: 'CYBER AI 图片生成器',
   description: '基于Gemini AI的赛博朋克风格图片生成与编辑工具',
   keywords: ['AI', '图片生成', '图片编辑', 'Gemini', '赛博朋克', 'Cyberpunk'],
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
-  themeColor: '#00ffff',
   other: {
     'format-detection': 'telephone=no',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#00ffff',
 }
 
 export default function RootLayout({

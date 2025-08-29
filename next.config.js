@@ -2,7 +2,6 @@
 const nextConfig = {
   // 启用实验性功能
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@google/generative-ai'],
   },
 
@@ -25,8 +24,7 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: false,
 
-  // 构建优化
-  swcMinify: true,
+  // 构建优化 (swcMinify is now default in Next.js 15)
 
   // 重定向配置
   async redirects() {
